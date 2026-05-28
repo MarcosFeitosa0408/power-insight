@@ -1,0 +1,271 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Power Insight</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body{
+      background:#020617;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .glass{
+      background:rgba(15,23,42,.6);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.08);
+    }
+  </style>
+</head>
+
+<body class="text-white">
+
+  <!-- NAVBAR -->
+
+  <header class="fixed top-0 w-full glass z-50">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+
+      <h1 class="text-2xl font-bold text-blue-500">
+        Power Insight
+      </h1>
+
+      <nav class="hidden md:flex gap-8 text-slate-300">
+        <a href="#">Home</a>
+        <a href="#">Plataforma</a>
+        <a href="#">IA</a>
+        <a href="#">Contato</a>
+      </nav>
+
+      <button class="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-xl font-semibold transition">
+        Demonstração
+      </button>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+
+  <section class="min-h-screen flex items-center justify-center px-6">
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+      <div>
+
+        <span class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full border border-blue-500/30">
+          Plataforma Power BI + IA
+        </span>
+
+        <h1 class="text-6xl lg:text-7xl font-black leading-tight mt-8">
+
+          Dados inteligentes.
+          <br>
+
+          <span class="text-blue-500">
+            Decisões melhores.
+          </span>
+
+        </h1>
+
+        <p class="text-slate-400 text-xl mt-8 leading-relaxed">
+
+          Compartilhe dashboards Power BI com segurança,
+          escalabilidade e inteligência artificial integrada.
+
+        </p>
+
+        <div class="flex gap-4 mt-10 flex-wrap">
+
+          <button class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-semibold transition">
+            Testar Gratuitamente
+          </button>
+
+          <button class="border border-slate-700 hover:border-blue-500 px-8 py-4 rounded-2xl font-semibold transition">
+            Falar com Especialista
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- DASHBOARD -->
+
+      <div class="relative">
+
+        <div class="absolute inset-0 bg-blue-600 blur-[120px] opacity-20"></div>
+
+        <div class="relative glass rounded-3xl p-8">
+
+          <div class="grid grid-cols-2 gap-4">
+
+            <div class="bg-slate-900 rounded-2xl p-6">
+              <p class="text-slate-400">
+                Receita
+              </p>
+
+              <h3 class="text-4xl font-black text-blue-500 mt-4">
+                R$ 2.4M
+              </h3>
+            </div>
+
+            <div class="bg-slate-900 rounded-2xl p-6">
+              <p class="text-slate-400">
+                Usuários
+              </p>
+
+              <h3 class="text-4xl font-black text-cyan-400 mt-4">
+                5.2K
+              </h3>
+            </div>
+
+            <div class="bg-slate-900 rounded-2xl p-6 col-span-2">
+
+              <div class="flex justify-between items-center">
+
+                <h3 class="text-xl font-bold">
+                  Analytics Dashboard
+                </h3>
+
+                <span class="text-green-400">
+                  +24%
+                </span>
+
+              </div>
+
+              <div class="mt-6 h-40 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+
+  <section class="py-32 px-6">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-20">
+
+        <h2 class="text-5xl font-bold">
+          Plataforma inteligente para Power BI
+        </h2>
+
+        <p class="text-slate-400 text-xl mt-6">
+          Segurança, IA e dashboards em tempo real.
+        </p>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="glass p-8 rounded-3xl">
+          <h3 class="text-2xl font-bold text-blue-500">
+            Economia
+          </h3>
+
+          <p class="text-slate-400 mt-4">
+            Reduza até 90% dos custos com licenciamento Power BI.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl">
+          <h3 class="text-2xl font-bold text-blue-500">
+            Cloud
+          </h3>
+
+          <p class="text-slate-400 mt-4">
+            Plataforma rápida, online e escalável.
+          </p>
+        </div>
+
+        <div class="glass p-8 rounded-3xl">
+          <h3 class="text-2xl font-bold text-blue-500">
+            IA Integrada
+          </h3>
+
+          <p class="text-slate-400 mt-4">
+            Converse com seus dados usando inteligência artificial.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="py-32 px-6">
+
+    <div class="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-cyan-500 rounded-[40px] p-20 text-center">
+
+      <h2 class="text-5xl font-black">
+        Transforme dados em decisões estratégicas
+      </h2>
+
+      <p class="mt-8 text-xl text-white/80">
+        Plataforma moderna para compartilhamento inteligente de dashboards.
+      </p>
+
+      <button class="mt-10 bg-white text-slate-950 px-10 py-4 rounded-2xl font-bold hover:scale-105 transition">
+        Solicitar Demonstração
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="border-t border-slate-800 py-16 px-6">
+
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
+
+      <div>
+
+        <h3 class="text-3xl font-bold text-blue-500">
+          Power Insight
+        </h3>
+
+        <p class="text-slate-400 mt-4">
+          Dados inteligentes. Decisões melhores.
+        </p>
+
+      </div>
+
+      <div>
+
+        <h4 class="font-semibold text-xl">
+          Contato
+        </h4>
+
+        <p class="text-slate-400 mt-4">
+          📞 (11) 95224-7141
+        </p>
+
+        <p class="text-slate-400 mt-2">
+          📧 marcosfeitosa.dados@gmail.com
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
+```
