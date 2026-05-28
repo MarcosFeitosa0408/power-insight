@@ -1,4 +1,4 @@
-Ok passa dinovo o index.html está assim - ```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -34,12 +34,25 @@ Ok passa dinovo o index.html está assim - ```html
         Power Insight
       </h1>
 
-      <nav class="hidden md:flex gap-8 text-slate-300">
-        <a href="#">Home</a>
-        <a href="#">Plataforma</a>
-        <a href="#">IA</a>
-        <a href="#">Contato</a>
-      </nav>
+     <nav class="hidden md:flex gap-8 text-slate-300">
+
+  <a href="#home" class="hover:text-blue-400 transition">
+    Home
+  </a>
+
+  <a href="#plataforma" class="hover:text-blue-400 transition">
+    Plataforma
+  </a>
+
+  <a href="#ia" class="hover:text-blue-400 transition">
+    IA
+  </a>
+
+  <a href="#contato" class="hover:text-blue-400 transition">
+    Contato
+  </a>
+
+</nav>
 
       <button class="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-xl font-semibold transition">
         Demonstração
@@ -50,7 +63,7 @@ Ok passa dinovo o index.html está assim - ```html
 
   <!-- HERO -->
 
-  <section class="min-h-screen flex items-center justify-center px-6">
+ <section id="home" class="min-h-screen flex items-center justify-center px-6">
 
     <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
@@ -78,20 +91,24 @@ Ok passa dinovo o index.html está assim - ```html
 
         </p>
 
-       ```html
+       ```
 <div class="flex gap-4 mt-10 flex-wrap">
 
-  <a href="https://wa.me/5511952247141" target="_blank">
+  <!-- BOTÃO WHATSAPP -->
 
-    <button class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-semibold transition">
+  <a href="https://wa.me/5511952247141?text=Olá,%20gostaria%20de%20uma%20demonstração" target="_blank">
+
+    <button class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-semibold transition duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(37,99,235,0.8)]">
       Falar no WhatsApp
     </button>
 
   </a>
 
+  <!-- BOTÃO EMAIL -->
+
   <a href="mailto:marcosfeitosa.dados@gmail.com">
 
-    <button class="border border-slate-700 hover:border-blue-500 px-8 py-4 rounded-2xl font-semibold transition">
+    <button class="border border-slate-700 hover:border-blue-500 px-8 py-4 rounded-2xl font-semibold transition duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.7)]">
       Enviar E-mail
     </button>
 
@@ -161,7 +178,7 @@ Ok passa dinovo o index.html está assim - ```html
 
   <!-- FEATURES -->
 
-  <section class="py-32 px-6">
+<section id="plataforma" class="py-32 px-6">
 
     <div class="max-w-7xl mx-auto">
 
@@ -179,7 +196,7 @@ Ok passa dinovo o index.html está assim - ```html
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <div class="glass p-8 rounded-3xl">
+        <div class="glass p-8 rounded-3xl transition duration-500 hover:scale-105 hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]">
           <h3 class="text-2xl font-bold text-blue-500">
             Economia
           </h3>
@@ -189,7 +206,7 @@ Ok passa dinovo o index.html está assim - ```html
           </p>
         </div>
 
-        <div class="glass p-8 rounded-3xl">
+        <div class="glass p-8 rounded-3xl transition duration-500 hover:scale-105 hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]">
           <h3 class="text-2xl font-bold text-blue-500">
             Cloud
           </h3>
@@ -199,7 +216,7 @@ Ok passa dinovo o index.html está assim - ```html
           </p>
         </div>
 
-        <div class="glass p-8 rounded-3xl">
+        <div class="glass p-8 rounded-3xl transition duration-500 hover:scale-105 hover:border-blue-500 hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]">
           <h3 class="text-2xl font-bold text-blue-500">
             IA Integrada
           </h3>
@@ -217,7 +234,7 @@ Ok passa dinovo o index.html está assim - ```html
 
   <!-- CTA -->
 
-  <section class="py-32 px-6">
+  <section id="ia" class="py-32 px-6">
 
     <div class="max-w-5xl mx-auto bg-gradient-to-r from-blue-600 to-cyan-500 rounded-[40px] p-20 text-center">
 
@@ -229,17 +246,20 @@ Ok passa dinovo o index.html está assim - ```html
         Plataforma moderna para compartilhamento inteligente de dashboards.
       </p>
 
-      <button class="mt-10 bg-white text-slate-950 px-10 py-4 rounded-2xl font-bold hover:scale-105 transition">
-        Solicitar Demonstração
-      </button>
+    <a href="https://wa.me/5511952247141?text=Olá,%20quero%20uma%20demonstração" target="_blank">
 
+  <button class="mt-10 bg-white text-slate-950 px-10 py-4 rounded-2xl font-bold transition duration-300 hover:scale-110 hover:shadow-[0_0_40px_rgba(255,255,255,0.7)]">
+    Solicitar Demonstração
+  </button>
+
+</a>
     </div>
 
   </section>
 
   <!-- FOOTER -->
 
-  <footer class="border-t border-slate-800 py-16 px-6">
+ <footer id="contato" class="border-t border-slate-800 py-16 px-6">
 
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
 
