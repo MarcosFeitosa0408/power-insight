@@ -89,11 +89,20 @@
   </a>
 
 </nav>
-```
 
-      <button class="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-xl font-semibold transition">
-        Demonstração
-      </button>
+
+    
+<a href="https://wa.me/5511952247141" target="_blank">
+
+  <button class="bg-blue-600 hover:bg-blue-700 px-5 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(37,99,235,0.8)]">
+
+    Demonstração
+
+  </button>
+
+</a>
+
+
 
     </div>
   </header>
@@ -215,31 +224,119 @@
     </div>
 
   </section>
- 
+ ```html id="t9ah0r"
 <!-- UPLOAD EXCEL -->
 
 <section class="py-32 px-6">
 
-  <div class="max-w-5xl mx-auto glass rounded-3xl p-12 text-center">
+  <div class="max-w-7xl mx-auto glass rounded-3xl p-12">
 
-    <h2 class="text-5xl font-black">
-      Envie sua Planilha
-    </h2>
+    <div class="text-center">
 
-    <p class="text-slate-400 text-xl mt-6">
-      Faça upload do Excel e gere dashboards automaticamente.
-    </p>
+      <h2 class="text-5xl font-black">
+        Envie sua Planilha
+      </h2>
 
-    <input 
-      type="file"
-      id="upload"
-      class="mt-10 block mx-auto text-white"
-      accept=".xlsx,.xls,.csv"
-    >
+      <p class="text-slate-400 text-xl mt-6">
+        Gere dashboards inteligentes automaticamente.
+      </p>
 
-    <div class="mt-16">
+      <input
+        type="file"
+        id="upload"
+        class="mt-10 block mx-auto text-white"
+        accept=".xlsx,.xls,.csv"
+      >
 
-      <canvas id="salesChart"></canvas>
+    </div>
+
+    <!-- KPIS -->
+
+    <div class="grid md:grid-cols-4 gap-6 mt-20">
+
+      <div class="glass p-6 rounded-3xl text-center hover:scale-105 transition duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.8)]">
+
+        <p class="text-slate-400">
+          Receita
+        </p>
+
+        <h3 class="text-4xl font-black text-blue-500 mt-4">
+          R$ 0
+        </h3>
+
+      </div>
+
+      <div class="glass p-6 rounded-3xl text-center hover:scale-105 transition duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.8)]">
+
+        <p class="text-slate-400">
+          Vendas
+        </p>
+
+        <h3 class="text-4xl font-black text-cyan-400 mt-4">
+          0
+        </h3>
+
+      </div>
+
+      <div class="glass p-6 rounded-3xl text-center hover:scale-105 transition duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.8)]">
+
+        <p class="text-slate-400">
+          Clientes
+        </p>
+
+        <h3 class="text-4xl font-black text-green-400 mt-4">
+          0
+        </h3>
+
+      </div>
+
+      <div class="glass p-6 rounded-3xl text-center hover:scale-105 transition duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.8)]">
+
+        <p class="text-slate-400">
+          Crescimento
+        </p>
+
+        <h3 class="text-4xl font-black text-pink-400 mt-4">
+          +0%
+        </h3>
+
+      </div>
+
+    </div>
+
+    <!-- GRÁFICOS -->
+
+    <div class="grid lg:grid-cols-2 gap-10 mt-20">
+
+      <div class="glass p-8 rounded-3xl">
+
+        <h3 class="text-2xl font-bold mb-6">
+          Gráfico de Colunas
+        </h3>
+
+        <canvas id="barChart"></canvas>
+
+      </div>
+
+      <div class="glass p-8 rounded-3xl">
+
+        <h3 class="text-2xl font-bold mb-6">
+          Gráfico Pizza
+        </h3>
+
+        <canvas id="pieChart"></canvas>
+
+      </div>
+
+      <div class="glass p-8 rounded-3xl lg:col-span-2">
+
+        <h3 class="text-2xl font-bold mb-6">
+          Gráfico Linha com Marcadores
+        </h3>
+
+        <canvas id="lineChart"></canvas>
+
+      </div>
 
     </div>
 
@@ -248,37 +345,6 @@
 </section>
 ```
 
-
-<!-- UPLOAD EXCEL -->
-
-<section class="py-32 px-6">
-
-  <div class="max-w-5xl mx-auto glass rounded-3xl p-12 text-center">
-
-    <h2 class="text-5xl font-black">
-      Envie sua Planilha
-    </h2>
-
-    <p class="text-slate-400 text-xl mt-6">
-      Faça upload do Excel e gere dashboards automaticamente.
-    </p>
-
-    <input 
-      type="file"
-      id="upload"
-      class="mt-10 block mx-auto text-white"
-      accept=".xlsx,.xls,.csv"
-    >
-
-    <div class="mt-16">
-
-      <canvas id="salesChart"></canvas>
-
-    </div>
-
-  </div>
-
-</section>
 ```
 
   <!-- FEATURES -->
