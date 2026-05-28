@@ -120,18 +120,28 @@
         </span>
 
         ```
-<h1 class="text-6xl lg:text-7xl font-black leading-tight mt-8 animate-pulse">
+```html
+<h1 class="text-6xl lg:text-7xl font-black leading-tight mt-8">
+
+  <span class="text-white">
+    Dados Inteligentes
+  </span>
+
+  <br>
+
+  <span class="text-blue-500">
+    Decisões Melhores
+  </span>
+
+</h1>
+
+<p class="text-slate-400 text-2xl mt-8 leading-relaxed max-w-2xl">
+
+  Plataforma inteligente de Analytics com IA para geração automática de dashboards, insights e análises avançadas em tempo real.
+
+</p>
 ```
 
-
-          Dados inteligentes.
-          <br>
-
-          <span class="text-blue-500">
-            Decisões melhores.
-          </span>
-
-        </h1>
 
         <p class="text-slate-400 text-xl mt-8 leading-relaxed">
 
@@ -484,7 +494,16 @@ upload.addEventListener('change', (e) => {
 
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
-    const json = XLSX.utils.sheet_to_json(sheet);
+   ```javascript
+let json = XLSX.utils.sheet_to_json(sheet);
+
+json = json.filter(item => {
+
+  return Object.values(item).every(value => value !== null && value !== '');
+
+});
+```
+
 
     generateCharts(json);
 
@@ -496,8 +515,13 @@ upload.addEventListener('change', (e) => {
 
 function generateCharts(data){
 
-  const labels = [];
-  const values = [];
+  ```javascript
+const labels = [];
+const values = [];
+
+data = data.slice(0, 5);
+```
+
 
   data.forEach(item => {
 
@@ -524,7 +548,10 @@ function generateCharts(data){
 
         data: values,
 
-        borderWidth: 1
+        ```javascript
+borderWidth: 3
+```
+
 
       }]
 
@@ -562,17 +589,24 @@ function generateCharts(data){
 
       labels,
 
-      datasets: [{
+     ```javascript id="1ehd7l"
+datasets: [{
 
-        label: 'Crescimento',
+  label: 'Crescimento',
 
-        data: values,
+  data: values,
 
-        tension: 0.4,
+  tension: 0.4,
 
-        fill: false
+  fill: false,
 
-      }]
+  pointRadius: values.length > 15 ? 0 : 4,
+
+  borderWidth: 3
+
+}]
+```
+
 
     }
 
