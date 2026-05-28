@@ -30,6 +30,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 ```
+```html id="hmh8iw"
+<!-- XLSX -->
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+<!-- CHART JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+```
 
 </head>
 
@@ -209,6 +218,39 @@
     </div>
 
   </section>
+  ```html id="ph4q93"
+<!-- UPLOAD EXCEL -->
+
+<section class="py-32 px-6">
+
+  <div class="max-w-5xl mx-auto glass rounded-3xl p-12 text-center">
+
+    <h2 class="text-5xl font-black">
+      Envie sua Planilha
+    </h2>
+
+    <p class="text-slate-400 text-xl mt-6">
+      Faça upload do Excel e gere dashboards automaticamente.
+    </p>
+
+    <input 
+      type="file"
+      id="upload"
+      class="mt-10 block mx-auto text-white"
+      accept=".xlsx,.xls,.csv"
+    >
+
+    <div class="mt-16">
+
+      <canvas id="salesChart"></canvas>
+
+    </div>
+
+  </div>
+
+</section>
+```
+
 ```html
 <!-- UPLOAD EXCEL -->
 
@@ -382,6 +424,77 @@ upload.addEventListener('change', (e) => {
     const json = XLSX.utils.sheet_to_json(sheet);
 
     console.log(json);
+
+    generateDashboard(json);
+
+  };
+
+  reader.readAsArrayBuffer(file);
+
+});
+
+function generateDashboard(data){
+
+  const labels = [];
+  const values = [];
+
+  data.forEach(item => {
+
+    const keys = Object.keys(item);
+
+    labels.push(item[keys[0]]);
+    values.push(item[keys[1]]);
+
+  });
+
+  const ctx = document.getElementById('salesChart');
+
+  new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+      labels: labels,
+
+      datasets: [{
+
+        label: 'Dados da Planilha',
+
+        data: values,
+
+        borderWidth: 1
+
+      }]
+
+    }
+
+  });
+
+}
+
+</script>
+```
+```html id="yx56ie"
+<script>
+
+const upload = document.getElementById('upload');
+
+upload.addEventListener('change', (e) => {
+
+  const file = e.target.files[0];
+
+  const reader = new FileReader();
+
+  reader.onload = (evt) => {
+
+    const data = new Uint8Array(evt.target.result);
+
+    const workbook = XLSX.read(data, { type: 'array' });
+
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
+    const json = XLSX.utils.sheet_to_json(sheet);
 
     generateDashboard(json);
 
