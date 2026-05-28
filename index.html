@@ -465,7 +465,7 @@
     </div>
 
   </footer>
-
+```html id="uv5b1x"
 <script>
 
 const upload = document.getElementById('upload');
@@ -486,9 +486,7 @@ upload.addEventListener('change', (e) => {
 
     const json = XLSX.utils.sheet_to_json(sheet);
 
-    console.log(json);
-
-    generateDashboard(json);
+    generateCharts(json);
 
   };
 
@@ -496,7 +494,7 @@ upload.addEventListener('change', (e) => {
 
 });
 
-function generateDashboard(data){
+function generateCharts(data){
 
   const labels = [];
   const values = [];
@@ -510,23 +508,69 @@ function generateDashboard(data){
 
   });
 
-  const ctx = document.getElementById('salesChart');
+  // BAR
 
-  new Chart(ctx, {
+  new Chart(document.getElementById('barChart'), {
 
     type: 'bar',
 
     data: {
 
-      labels: labels,
+      labels,
 
       datasets: [{
 
-        label: 'Dados da Planilha',
+        label: 'Vendas',
 
         data: values,
 
         borderWidth: 1
+
+      }]
+
+    }
+
+  });
+
+  // PIE
+
+  new Chart(document.getElementById('pieChart'), {
+
+    type: 'pie',
+
+    data: {
+
+      labels,
+
+      datasets: [{
+
+        data: values
+
+      }]
+
+    }
+
+  });
+
+  // LINE
+
+  new Chart(document.getElementById('lineChart'), {
+
+    type: 'line',
+
+    data: {
+
+      labels,
+
+      datasets: [{
+
+        label: 'Crescimento',
+
+        data: values,
+
+        tension: 0.4,
+
+        fill: false
 
       }]
 
@@ -539,75 +583,6 @@ function generateDashboard(data){
 </script>
 ```
 
-<script>
-
-const upload = document.getElementById('upload');
-
-upload.addEventListener('change', (e) => {
-
-  const file = e.target.files[0];
-
-  const reader = new FileReader();
-
-  reader.onload = (evt) => {
-
-    const data = new Uint8Array(evt.target.result);
-
-    const workbook = XLSX.read(data, { type: 'array' });
-
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-
-    const json = XLSX.utils.sheet_to_json(sheet);
-
-    generateDashboard(json);
-
-  };
-
-  reader.readAsArrayBuffer(file);
-
-});
-
-function generateDashboard(data){
-
-  const labels = [];
-  const values = [];
-
-  data.forEach(item => {
-
-    const keys = Object.keys(item);
-
-    labels.push(item[keys[0]]);
-    values.push(item[keys[1]]);
-
-  });
-
-  const ctx = document.getElementById('salesChart');
-
-  new Chart(ctx, {
-
-    type: 'bar',
-
-    data: {
-
-      labels: labels,
-
-      datasets: [{
-
-        label: 'Dados da Planilha',
-
-        data: values,
-
-        borderWidth: 1
-
-      }]
-
-    }
-
-  });
-
-}
-
-</script>
 ```
 
 </body>
