@@ -23,7 +23,22 @@
   </style>
 </head>
 
-<body class="text-white">
+```
+<body class="text-white overflow-x-hidden">
+
+  <!-- BACKGROUND ANIMADO -->
+
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600 opacity-20 blur-[120px] animate-pulse rounded-full"></div>
+
+    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-500 opacity-20 blur-[120px] animate-pulse rounded-full"></div>
+
+    <div class="absolute top-[40%] left-[40%] w-[300px] h-[300px] bg-indigo-500 opacity-10 blur-[100px] rounded-full"></div>
+
+  </div>
+```
+
 
   <!-- NAVBAR -->
 
@@ -36,11 +51,17 @@
 
      <nav class="hidden md:flex gap-8 text-slate-300">
 
-  <a href="#home" class="hover:text-blue-400 transition">
+ ```html id="bnx3a4"
+<a href="#home" class="hover:text-blue-400 transition duration-300 hover:drop-shadow-[0_0_10px_rgba(59,130,246,1)]">
+```
+
     Home
   </a>
 
-  <a href="#plataforma" class="hover:text-blue-400 transition">
+  ```html id="mn89w0"
+<a href="#plataforma" class="hover:text-blue-400 transition duration-300 hover:drop-shadow-[0_0_10px_rgba(59,130,246,1)]">
+```
+
     Plataforma
   </a>
 
@@ -73,7 +94,10 @@
           Plataforma Power BI + IA
         </span>
 
-        <h1 class="text-6xl lg:text-7xl font-black leading-tight mt-8">
+        ```
+<h1 class="text-6xl lg:text-7xl font-black leading-tight mt-8 animate-pulse">
+```
+
 
           Dados inteligentes.
           <br>
