@@ -239,7 +239,7 @@
     </div>
 
   </section>
-id="t9ah0r"
+
 <!-- UPLOAD EXCEL -->
 
 <section class="py-32 px-6">
@@ -490,8 +490,13 @@ id="t9ah0r"
     </div>
 
   </footer>
- id="uv5b1x"
+
+
 <script>
+
+let barChart;
+let pieChart;
+let lineChart;
 
 const upload = document.getElementById('upload');
 
@@ -509,16 +514,26 @@ upload.addEventListener('change', (e) => {
 
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
 
+    let json = XLSX.utils.sheet_to_json(sheet, {
 
-let json = XLSX.utils.sheet_to_json(sheet);
+      raw: false,
+      defval: 0
 
-json = json.filter(item => {
+    });
 
-  return Object.values(item).every(value => value !== null && value !== '');
+    // LIMPEZA AUTOMÁTICA
 
-});
+    json = json.filter(item => {
 
+      return Object.values(item).some(value =>
 
+        value !== null &&
+        value !== '' &&
+        value !== undefined
+
+      );
+
+    });
 
     generateCharts(json);
 
@@ -530,51 +545,49 @@ json = json.filter(item => {
 
 function generateCharts(data){
 
+  const labels = [];
+  const values = [];
+  const receitas = [];
 
-const labels = [];
-const values = [];
-const receitas = [];
-
-  
-
-data = data.slice(0, 5);
-
-
+  data = data.slice(0, 5);
 
   data.forEach(item => {
 
-const keys = Object.keys(item);
+    const keys = Object.keys(item);
 
-labels.push(item[keys[0]]);
+    labels.push(item[keys[0]]);
 
-values.push(Number(item[keys[1]]) || 0);
+    values.push(Number(item[keys[1]]) || 0);
 
-receitas.push(Number(item[keys[1]]) || 0);
-
-
+    receitas.push(Number(item[keys[1]]) || 0);
 
   });
 
-// KPI AUTOMÁTICO
+  // KPI AUTOMÁTICO
 
-const totalReceita = receitas.reduce((a, b) => a + b, 0);
+  const totalReceita = receitas.reduce((a, b) => a + b, 0);
 
-document.getElementById('receitaTotal').innerText =
-`R$ ${totalReceita.toLocaleString('pt-BR')}`;
+  document.getElementById('receitaTotal').innerText =
+  `R$ ${totalReceita.toLocaleString('pt-BR')}`;
 
-document.getElementById('totalVendas').innerText =
-values.length;
+  document.getElementById('totalVendas').innerText =
+  values.length;
 
-document.getElementById('totalClientes').innerText =
-Math.floor(values.length * 2.3);
+  document.getElementById('totalClientes').innerText =
+  Math.floor(values.length * 2.3);
 
-document.getElementById('crescimentoTotal').innerText =
-`+${Math.floor(Math.random() * 35)}%`;
+  document.getElementById('crescimentoTotal').innerText =
+  `+${Math.floor(Math.random() * 35)}%`;
 
+  // DESTRUIR GRÁFICOS ANTIGOS
 
-  // BAR
+  if(barChart) barChart.destroy();
+  if(pieChart) pieChart.destroy();
+  if(lineChart) lineChart.destroy();
 
-  new Chart(document.getElementById('barChart'), {
+  // BAR CHART
+
+  barChart = new Chart(document.getElementById('barChart'), {
 
     type: 'bar',
 
@@ -588,20 +601,23 @@ document.getElementById('crescimentoTotal').innerText =
 
         data: values,
 
-   
-borderWidth: 3
-
-
+        borderWidth: 2
 
       }]
+
+    },
+
+    options: {
+
+      responsive: true
 
     }
 
   });
 
-  // PIE
+  // PIE CHART
 
-  new Chart(document.getElementById('pieChart'), {
+  pieChart = new Chart(document.getElementById('pieChart'), {
 
     type: 'pie',
 
@@ -615,13 +631,19 @@ borderWidth: 3
 
       }]
 
+    },
+
+    options: {
+
+      responsive: true
+
     }
 
   });
 
-  // LINE
+  // LINE CHART
 
-  new Chart(document.getElementById('lineChart'), {
+  lineChart = new Chart(document.getElementById('lineChart'), {
 
     type: 'line',
 
@@ -629,24 +651,27 @@ borderWidth: 3
 
       labels,
 
-     id="1ehd7l"
-datasets: [{
+      datasets: [{
 
-  label: 'Crescimento',
+        label: 'Crescimento',
 
-  data: values,
+        data: values,
 
-  tension: 0.4,
+        tension: 0.4,
 
-  fill: false,
+        fill: false,
 
-  pointRadius: values.length > 15 ? 0 : 4,
+        pointRadius: values.length > 15 ? 0 : 4,
 
-  borderWidth: 3
+        borderWidth: 3
 
-}]
+      }]
 
+    },
 
+    options: {
+
+      responsive: true
 
     }
 
@@ -655,6 +680,7 @@ datasets: [{
 }
 
 </script>
+
 
 
 </body>
