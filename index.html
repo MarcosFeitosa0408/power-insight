@@ -321,50 +321,149 @@
 
     <!-- GRÁFICOS -->
 
-    <div class="grid lg:grid-cols-2 gap-10 mt-20">
 
-      <div class="glass p-8 rounded-3xl">
+<div class="mt-20">
 
-        <h3 class="text-2xl font-bold mb-6">
-          Gráfico de Colunas
-        </h3>
+  <div class="glass rounded-3xl p-10">
 
-        <canvas id="barChart"></canvas>
+    <div class="grid lg:grid-cols-3 gap-10">
+
+      <!-- GRÁFICO -->
+
+      <div class="lg:col-span-2">
+
+        <div class="flex justify-between items-center mb-8">
+
+          <div>
+
+            <h2 class="text-3xl font-black text-white">
+              Analytics Dashboard
+            </h2>
+
+            <p class="text-slate-400 mt-2">
+              Análise inteligente de desempenho
+            </p>
+
+          </div>
+
+          <div class="text-right">
+
+            <h3 class="text-3xl font-black text-green-400">
+              +17.24%
+            </h3>
+
+            <p class="text-slate-400">
+              Crescimento mensal
+            </p>
+
+          </div>
+
+        </div>
+
+        <canvas id="advancedChart" height="120"></canvas>
+
+        <!-- KPIs -->
+
+        <div class="grid grid-cols-3 gap-6 mt-10">
+
+          <div class="glass p-6 rounded-2xl text-center">
+
+            <h4 class="text-slate-400 text-sm">
+              Receita Mensal
+            </h4>
+
+            <p class="text-2xl font-black text-cyan-400 mt-2">
+              R$ 2.4M
+            </p>
+
+          </div>
+
+          <div class="glass p-6 rounded-2xl text-center">
+
+            <h4 class="text-slate-400 text-sm">
+              Novos Clientes
+            </h4>
+
+            <p class="text-2xl font-black text-blue-400 mt-2">
+              4.135
+            </p>
+
+          </div>
+
+          <div class="glass p-6 rounded-2xl text-center">
+
+            <h4 class="text-slate-400 text-sm">
+              Conversão
+            </h4>
+
+            <p class="text-2xl font-black text-green-400 mt-2">
+              84%
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <div class="glass p-8 rounded-3xl">
+      <!-- DESCRIÇÃO LATERAL -->
 
-        <h3 class="text-2xl font-bold mb-6">
-          Gráfico Pizza
-        </h3>
+      <div>
 
-        <canvas id="pieChart"></canvas>
+        <div class="glass rounded-3xl p-8 h-full">
 
-      </div>
+          <h3 class="text-2xl font-black text-cyan-400 mb-8">
+            Significado dos Indicadores
+          </h3>
 
-      <div class="glass p-8 rounded-3xl lg:col-span-2">
+          <div class="space-y-8">
 
-        <h3 class="text-2xl font-bold mb-6">
-          Gráfico Linha com Marcadores
-        </h3>
+            <div>
 
-        <canvas id="lineChart"></canvas>
+              <h4 class="font-bold text-cyan-400 mb-2">
+                📊 Barras
+              </h4>
+
+              <p class="text-slate-300 leading-relaxed">
+                Representam faturamento, vendas ou volume
+                total processado pela plataforma.
+              </p>
+
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-blue-400 mb-2">
+                📈 Linha Analítica
+              </h4>
+
+              <p class="text-slate-300 leading-relaxed">
+                Demonstra crescimento, tendência e comportamento
+                estratégico dos dados ao longo do tempo.
+              </p>
+
+            </div>
+
+            <div>
+
+              <h4 class="font-bold text-green-400 mb-2">
+                🤖 Inteligência Artificial
+              </h4>
+
+              <p id="aiMeaning" class="text-slate-300 leading-relaxed">
+                A IA identificará automaticamente padrões,
+                crescimento e oscilações relevantes.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
     </div>
-
-  </div>
-<div id="insights" class="mt-16 glass rounded-3xl p-8">
-
-  <h3 class="text-3xl font-bold text-blue-400 mb-6">
-    Insights Inteligentes IA
-  </h3>
-
-  <div id="insightText" class="text-slate-300 text-xl leading-relaxed">
-
-    Aguardando análise da planilha...
 
   </div>
 
@@ -499,6 +598,7 @@
 let barChart;
 let pieChart;
 let lineChart;
+let advancedChart;
 
 const upload = document.getElementById('upload');
 
@@ -565,6 +665,143 @@ function generateCharts(data){
 
   });
 
+  advancedChart = new Chart(document.getElementById('advancedChart'), {
+
+  type: 'bar',
+
+  data: {
+
+    labels,
+
+    datasets: [
+
+      {
+
+        type: 'bar',
+
+        label: 'Receita',
+
+        data: values,
+
+        backgroundColor: '#06b6d4',
+
+        borderRadius: 8,
+
+        barThickness: 26
+
+      },
+
+      {
+
+        type: 'bar',
+
+        label: 'Lucro',
+
+        data: values.map(v => v * 0.35),
+
+        backgroundColor: '#f59e0b',
+
+        borderRadius: 8,
+
+        barThickness: 10
+
+      },
+
+      {
+
+        type: 'line',
+
+        label: 'Tendência',
+
+        data: values,
+
+        borderColor: '#1e3a8a',
+
+        backgroundColor: '#1e3a8a',
+
+        borderWidth: 4,
+
+        tension: 0.4,
+
+        pointRadius: values.length > 12 ? 0 : 5
+
+      }
+
+    ]
+
+  },
+
+  options: {
+
+    responsive: true,
+
+    plugins: {
+
+      legend: {
+
+        labels: {
+
+          color: 'white'
+
+        }
+
+      }
+
+    },
+
+    scales: {
+
+      x: {
+
+        ticks: {
+
+          color: 'white'
+
+        },
+
+        grid: {
+
+          color: 'rgba(255,255,255,0.05)'
+
+        }
+
+      },
+
+      y: {
+
+        ticks: {
+
+          color: 'white'
+
+        },
+
+        grid: {
+
+          color: 'rgba(255,255,255,0.05)'
+
+        }
+
+      }
+
+    }
+
+  }
+
+});
+  const melhorItem =
+labels[values.indexOf(Math.max(...values))];
+
+document.getElementById('aiMeaning').innerHTML = `
+
+A Inteligência Artificial identificou que
+<strong>${melhorItem}</strong>
+apresenta o maior desempenho do período analisado.
+
+A linha analítica demonstra tendência de crescimento
+e comportamento estratégico dos dados processados automaticamente.
+
+`;
+
   // KPI AUTOMÁTICO
 
   const totalReceita = receitas.reduce((a, b) => a + b, 0);
@@ -599,6 +836,7 @@ document.getElementById('insightText').innerHTML = `
   if(barChart) barChart.destroy();
   if(pieChart) pieChart.destroy();
   if(lineChart) lineChart.destroy();
+  if(advancedChart) advancedChart.destroy();
 
   // BAR CHART
 
