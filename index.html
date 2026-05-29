@@ -31,14 +31,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<!-- XLSX -->
-
-<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-
-<!-- CHART JS -->
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 
 </head>
 
@@ -179,8 +171,6 @@
   </a>
 
 </div>
-
-
 
       <!-- DASHBOARD -->
 
@@ -366,7 +356,19 @@
     </div>
 
   </div>
+<div id="insights" class="mt-16 glass rounded-3xl p-8">
 
+  <h3 class="text-3xl font-bold text-blue-400 mb-6">
+    Insights Inteligentes IA
+  </h3>
+
+  <div id="insightText" class="text-slate-300 text-xl leading-relaxed">
+
+    Aguardando análise da planilha...
+
+  </div>
+
+</div>
 </section>
 
 
@@ -567,6 +569,19 @@ function generateCharts(data){
 
   const totalReceita = receitas.reduce((a, b) => a + b, 0);
 
+  const maiorValor = Math.max(...values);
+
+  const melhorItem = labels[values.indexOf(maiorValor)];
+
+document.getElementById('insightText').innerHTML = `
+
+📈 O item <strong>${melhorItem}</strong> possui o maior desempenho atual.
+
+💰 Receita total analisada: <strong>R$ ${totalReceita.toLocaleString('pt-BR')}</strong>.
+
+🚀 O dashboard identificou tendências automáticas nos dados enviados.
+
+`;
   document.getElementById('receitaTotal').innerText =
   `R$ ${totalReceita.toLocaleString('pt-BR')}`;
 
@@ -601,17 +616,64 @@ function generateCharts(data){
 
         data: values,
 
-        borderWidth: 2
+      backgroundColor: [
+  '#2563eb',
+  '#06b6d4',
+  '#8b5cf6',
+  '#22c55e',
+  '#f59e0b'
+],
+
+borderRadius: 12,
+borderWidth: 0
 
       }]
 
     },
 
-    options: {
+ options: {
 
-      responsive: true
+  responsive: true,
+
+  plugins: {
+
+    legend: {
+
+      labels: {
+
+        color: 'white'
+
+      }
 
     }
+
+  },
+
+  scales: {
+
+    x: {
+
+      ticks: {
+
+        color: 'white'
+
+      }
+
+    },
+
+    y: {
+
+      ticks: {
+
+        color: 'white'
+
+      }
+
+    }
+
+  }
+
+}
 
   });
 
@@ -659,7 +721,7 @@ function generateCharts(data){
 
         tension: 0.4,
 
-        fill: false,
+       fill: true,
 
         pointRadius: values.length > 15 ? 0 : 4,
 
