@@ -595,9 +595,6 @@
 
 <script>
 
-let barChart;
-let pieChart;
-let lineChart;
 let advancedChart;
 
 const upload = document.getElementById('upload');
@@ -646,6 +643,13 @@ upload.addEventListener('change', (e) => {
 });
 
 function generateCharts(data){
+
+  
+// DESTRUIR GRÁFICOS ANTIGOS
+
+
+if(advancedChart) advancedChart.destroy();
+
 
   const labels = [];
   const values = [];
@@ -810,15 +814,7 @@ e comportamento estratégico dos dados processados automaticamente.
 
   const melhorItem = labels[values.indexOf(maiorValor)];
 
-document.getElementById('insightText').innerHTML = `
 
-📈 O item <strong>${melhorItem}</strong> possui o maior desempenho atual.
-
-💰 Receita total analisada: <strong>R$ ${totalReceita.toLocaleString('pt-BR')}</strong>.
-
-🚀 O dashboard identificou tendências automáticas nos dados enviados.
-
-`;
   document.getElementById('receitaTotal').innerText =
   `R$ ${totalReceita.toLocaleString('pt-BR')}`;
 
@@ -831,153 +827,8 @@ document.getElementById('insightText').innerHTML = `
   document.getElementById('crescimentoTotal').innerText =
   `+${Math.floor(Math.random() * 35)}%`;
 
-  // DESTRUIR GRÁFICOS ANTIGOS
 
-  if(barChart) barChart.destroy();
-  if(pieChart) pieChart.destroy();
-  if(lineChart) lineChart.destroy();
-  if(advancedChart) advancedChart.destroy();
-
-  // BAR CHART
-
-  barChart = new Chart(document.getElementById('barChart'), {
-
-    type: 'bar',
-
-    data: {
-
-      labels,
-
-      datasets: [{
-
-        label: 'Vendas',
-
-        data: values,
-
-      backgroundColor: [
-  '#2563eb',
-  '#06b6d4',
-  '#8b5cf6',
-  '#22c55e',
-  '#f59e0b'
-],
-
-borderRadius: 12,
-borderWidth: 0
-
-      }]
-
-    },
-
- options: {
-
-  responsive: true,
-
-  plugins: {
-
-    legend: {
-
-      labels: {
-
-        color: 'white'
-
-      }
-
-    }
-
-  },
-
-  scales: {
-
-    x: {
-
-      ticks: {
-
-        color: 'white'
-
-      }
-
-    },
-
-    y: {
-
-      ticks: {
-
-        color: 'white'
-
-      }
-
-    }
-
-  }
-
-}
-
-  });
-
-  // PIE CHART
-
-  pieChart = new Chart(document.getElementById('pieChart'), {
-
-    type: 'pie',
-
-    data: {
-
-      labels,
-
-      datasets: [{
-
-        data: values
-
-      }]
-
-    },
-
-    options: {
-
-      responsive: true
-
-    }
-
-  });
-
-  // LINE CHART
-
-  lineChart = new Chart(document.getElementById('lineChart'), {
-
-    type: 'line',
-
-    data: {
-
-      labels,
-
-      datasets: [{
-
-        label: 'Crescimento',
-
-        data: values,
-
-        tension: 0.4,
-
-       fill: true,
-
-        pointRadius: values.length > 15 ? 0 : 4,
-
-        borderWidth: 3
-
-      }]
-
-    },
-
-    options: {
-
-      responsive: true
-
-    }
-
-  });
-
-}
+  
 
 </script>
 
