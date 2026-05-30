@@ -792,8 +792,14 @@ if(advancedChart) advancedChart.destroy();
   }
 
 });
-  const melhorItem =
-labels[values.indexOf(Math.max(...values))];
+
+    // KPI AUTOMÁTICO
+  
+  const totalReceita = receitas.reduce((a, b) => a + b, 0);
+  
+  const maiorValor = Math.max(...values);
+
+  const melhorItem = labels[values.indexOf(maiorValor)];
 
 document.getElementById('aiMeaning').innerHTML = `
 
@@ -806,16 +812,8 @@ e comportamento estratégico dos dados processados automaticamente.
 
 `;
 
-  // KPI AUTOMÁTICO
 
-  const totalReceita = receitas.reduce((a, b) => a + b, 0);
-
-  const maiorValor = Math.max(...values);
-
-  const melhorItem = labels[values.indexOf(maiorValor)];
-
-
-  document.getElementById('receitaTotal').innerText =
+   document.getElementById('receitaTotal').innerText =
   `R$ ${totalReceita.toLocaleString('pt-BR')}`;
 
   document.getElementById('totalVendas').innerText =
@@ -827,7 +825,7 @@ e comportamento estratégico dos dados processados automaticamente.
   document.getElementById('crescimentoTotal').innerText =
   `+${Math.floor(Math.random() * 35)}%`;
 
-
+}
   
 
 </script>
