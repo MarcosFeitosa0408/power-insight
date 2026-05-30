@@ -360,7 +360,25 @@
 
         </div>
 
-        <canvas id="advancedChart" height="120"></canvas>
+        <div class="grid lg:grid-cols-2 gap-8">
+
+  <div class="glass p-4 rounded-2xl">
+    <canvas id="receitaChart"></canvas>
+  </div>
+
+  <div class="glass p-4 rounded-2xl">
+    <canvas id="pizzaChart"></canvas>
+  </div>
+
+  <div class="glass p-4 rounded-2xl">
+    <canvas id="tendenciaChart"></canvas>
+  </div>
+
+  <div class="glass p-4 rounded-2xl">
+    <canvas id="lucroChart"></canvas>
+  </div>
+
+</div>
 
         <!-- KPIs -->
 
@@ -595,7 +613,10 @@
 
 <script>
 
-let advancedChart;
+let receitaChart;
+let pizzaChart;
+let tendenciaChart;
+let lucroChart;
 
 const upload = document.getElementById('upload');
 
@@ -648,7 +669,10 @@ function generateCharts(data){
 // DESTRUIR GRÁFICOS ANTIGOS
 
 
-if(advancedChart) advancedChart.destroy();
+if(receitaChart) receitaChart.destroy();
+if(pizzaChart) pizzaChart.destroy();
+if(tendenciaChart) tendenciaChart.destroy();
+if(lucroChart) lucroChart.destroy();
 
 
   const labels = [];
@@ -668,129 +692,59 @@ if(advancedChart) advancedChart.destroy();
     receitas.push(Number(item[keys[1]]) || 0);
 
   });
-
-  advancedChart = new Chart(document.getElementById('advancedChart'), {
-
+receitaChart = new Chart(
+document.getElementById('receitaChart'),
+{
   type: 'bar',
-
-  data: {
-
+  data:{
     labels,
-
-    datasets: [
-
-      {
-
-        type: 'bar',
-
-        label: 'Receita',
-
-        data: values,
-
-        backgroundColor: '#06b6d4',
-
-        borderRadius: 8,
-
-        barThickness: 26
-
-      },
-
-      {
-
-        type: 'bar',
-
-        label: 'Lucro',
-
-        data: values.map(v => v * 0.35),
-
-        backgroundColor: '#f59e0b',
-
-        borderRadius: 8,
-
-        barThickness: 10
-
-      },
-
-      {
-
-        type: 'line',
-
-        label: 'Tendência',
-
-        data: values,
-
-        borderColor: '#1e3a8a',
-
-        backgroundColor: '#1e3a8a',
-
-        borderWidth: 4,
-
-        tension: 0.4,
-
-        pointRadius: values.length > 12 ? 0 : 5
-
-      }
-
-    ]
-
-  },
-
-  options: {
-
-    responsive: true,
-
-    plugins: {
-
-      legend: {
-
-        labels: {
-
-          color: 'white'
-
-        }
-
-      }
-
-    },
-
-    scales: {
-
-      x: {
-
-        ticks: {
-
-          color: 'white'
-
-        },
-
-        grid: {
-
-          color: 'rgba(255,255,255,0.05)'
-
-        }
-
-      },
-
-      y: {
-
-        ticks: {
-
-          color: 'white'
-
-        },
-
-        grid: {
-
-          color: 'rgba(255,255,255,0.05)'
-
-        }
-
-      }
-
-    }
-
+    datasets:[{
+      label:'Receita',
+      data: values,
+      backgroundColor:'#06b6d4'
+    }]
   }
+});
 
+pizzaChart = new Chart(
+document.getElementById('pizzaChart'),
+{
+  type:'pie',
+  data:{
+    labels,
+    datasets:[{
+      data: values
+    }]
+  }
+});
+
+tendenciaChart = new Chart(
+document.getElementById('tendenciaChart'),
+{
+  type:'line',
+  data:{
+    labels,
+    datasets:[{
+      label:'Tendência',
+      data: values,
+      borderColor:'#1e3a8a',
+      tension:0.4
+    }]
+  }
+});
+
+lucroChart = new Chart(
+document.getElementById('lucroChart'),
+{
+  type:'bar',
+  data:{
+    labels,
+    datasets:[{
+      label:'Lucro',
+      data: values.map(v => v * 0.35),
+      backgroundColor:'#22c55e'
+    }]
+  }
 });
 
     // KPI AUTOMÁTICO
