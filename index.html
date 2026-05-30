@@ -664,7 +664,7 @@ upload.addEventListener('change', (e) => {
 });
 
 function generateCharts(data){
-
+console.log(data);
   
 // DESTRUIR GRÁFICOS ANTIGOS
 
@@ -679,7 +679,7 @@ if(lucroChart) lucroChart.destroy();
   const values = [];
   const receitas = [];
 
-  data = data.slice(0, 5);
+  data = data.slice(0, 20);
 
   data.forEach(item => {
 
