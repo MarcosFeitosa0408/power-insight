@@ -665,8 +665,8 @@ upload.addEventListener('change', (e) => {
 
 function generateCharts(data){
 
-  console.log(data);
-  console.log(data[0]);
+ console.log(data);
+ console.log(JSON.stringify(data[0], null, 2));
 
 
 
@@ -705,8 +705,8 @@ data.forEach(item => {
 
 });
 
-console.log("LABELS:", labels);
-console.log("VALUES:", values);
+console.log("LABELS =", JSON.stringify(labels));
+console.log("VALUES =", JSON.stringify(values));
   
 receitaChart = new Chart(
 document.getElementById('receitaChart'),
