@@ -665,11 +665,33 @@ upload.addEventListener('change', (e) => {
 
 function generateCharts(data){
 
- console.log(data);
- console.log(JSON.stringify(data[0], null, 2));
+console.log(data);
+  
+console.log(JSON.stringify(data[0], null, 2));
+
+const colunas = Object.keys(data[0]);
+
+console.log("COLUNAS:", colunas);
 
 
+const colunaTexto = colunas.find(coluna => {
 
+  const valor = data[0][coluna];
+
+  return isNaN(Number(valor));
+
+});
+
+const colunaNumero = colunas.find(coluna => {
+
+  const valor = data[0][coluna];
+
+  return !isNaN(Number(valor));
+
+});
+
+console.log("COLUNA TEXTO:", colunaTexto);
+console.log("COLUNA NUMERO:", colunaNumero);
   
 // DESTRUIR GRÁFICOS ANTIGOS
 
@@ -686,21 +708,13 @@ const receitas = [];
 
 data = data.slice(0, 20);
 
-data = data.filter(item =>
-  item["Rótulos de Linha"] !== "Total Geral"
-);
 
 data.forEach(item => {
 
-  labels.push(item["Rótulos de Linha"]);
+  labels.push(item[colunaTexto]);
 
-  const valor =
-  parseFloat(
-    String(item["Soma de Valor"])
-      .replace(/\./g,'')
-      .replace(',', '.')
-  );
-
+const valor =
+Number(item[colunaNumero]) || 0;
   values.push(valor);
   receitas.push(valor);
 
