@@ -679,13 +679,14 @@ if(lucroChart) lucroChart.destroy();
   const values = [];
   const receitas = [];
 
+
   data = data.slice(0, 20);
 
   data = data.filter(item =>
   item["Rótulos de Linha"] !== "Total Geral"
 );
 
- data.forEach(item => {
+data.forEach(item => {
 
   labels.push(item["Rótulos de Linha"]);
 
@@ -698,6 +699,10 @@ if(lucroChart) lucroChart.destroy();
   );
 
 });
+
+console.log("LABELS:", labels);
+console.log("VALUES:", values);
+  
 receitaChart = new Chart(
 document.getElementById('receitaChart'),
 {
