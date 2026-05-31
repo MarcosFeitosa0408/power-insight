@@ -681,17 +681,23 @@ if(lucroChart) lucroChart.destroy();
 
   data = data.slice(0, 20);
 
-  data.forEach(item => {
+  data = data.filter(item =>
+  item["Rótulos de Linha"] !== "Total Geral"
+);
 
-    const keys = Object.keys(item);
+ data.forEach(item => {
 
-    labels.push(item[keys[0]]);
+  labels.push(item["Rótulos de Linha"]);
 
-    values.push(Number(item[keys[1]]) || 0);
+  values.push(
+    Number(item["Soma de Valor"]) || 0
+  );
 
-    receitas.push(Number(item[keys[1]]) || 0);
+  receitas.push(
+    Number(item["Soma de Valor"]) || 0
+  );
 
-  });
+});
 receitaChart = new Chart(
 document.getElementById('receitaChart'),
 {
