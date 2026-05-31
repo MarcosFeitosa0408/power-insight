@@ -680,14 +680,13 @@ if(tendenciaChart) tendenciaChart.destroy();
 if(lucroChart) lucroChart.destroy();
 
 
-  const labels = [];
-  const values = [];
-  const receitas = [];
+const labels = [];
+const values = [];
+const receitas = [];
 
+data = data.slice(0, 20);
 
-  data = data.slice(0, 20);
-
-  data = data.filter(item =>
+data = data.filter(item =>
   item["Rótulos de Linha"] !== "Total Geral"
 );
 
@@ -695,12 +694,19 @@ data.forEach(item => {
 
   labels.push(item["Rótulos de Linha"]);
 
-  values.push(
-    Number(item["Soma de Valor"]) || 0
+  const valor =
+  parseFloat(
+    String(item["Soma de Valor"])
+      .replace(/\./g,'')
+      .replace(',', '.')
   );
 
-  receitas.push(
-    Number(item["Soma de Valor"]) || 0
+  values.push(valor);
+  receitas.push(valor);
+
+  console.log(
+    item["Rótulos de Linha"],
+    valor
   );
 
 });
@@ -790,7 +796,7 @@ e comportamento estratégico dos dados processados automaticamente.
   values.length;
 
   document.getElementById('totalClientes').innerText =
-  Math.floor(values.length * 2.3);
+  Math.floor(values.length * 2.3);  
 
   document.getElementById('crescimentoTotal').innerText =
   `+${Math.floor(Math.random() * 35)}%`;
