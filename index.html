@@ -673,6 +673,26 @@ const colunas = Object.keys(data[0]);
 
 console.log("COLUNAS:", colunas);
 
+ const colunaReceita =
+  colunas.find(c =>
+    c.toLowerCase().includes("receita")
+  );
+
+const colunaLucro =
+  colunas.find(c =>
+    c.toLowerCase().includes("lucro")
+  );
+
+const colunaProduto =
+  colunas.find(c =>
+    c.toLowerCase().includes("produto")
+  );
+
+const colunaRegiao =
+  colunas.find(c =>
+    c.toLowerCase().includes("região") ||
+    c.toLowerCase().includes("regiao")
+  );  
 
 const colunaTexto = colunas.find(coluna => {
 
